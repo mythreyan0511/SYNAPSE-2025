@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Synapse '25 — Culturals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="nav-container">
+	  <button class="nav-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html#home">HOME</a></li>
+        <li><a href="index.html#sponsors">Our Sponsors</a></li>
+        <li><a href="index.html#about-gvmc">About GVMC</a></li>
+        <li><a href="index.html#about-synapse">About Synapse</a></li>
+        <li><a href="index.html#instructions">General Instructions</a></li>
+		<li><a href="index.html#events">Our Events</a></li>
+        <li><a href="index.html#guests">Our Guests</a></li>	
+        <li><a href="index.html#advisors">Our Advisors</a></li>
+        <li><a href="index.html#student-council">Student Council</a></li>
+		<li><a href="index.html#paracouncil">Para Council</a></li>
+        <li><a href="index.html#gallery">Our Gallery</a></li>
+        <li><a href="index.html#other-sponsors">Other Sponsors</a></li>
+		<li><a href="index.html#accommodation">For Accommodation</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<section id="culturals" class="our-events">
+  <h1 class="page-title shimmer">Synapse Cultural Events 2025 — Culturals</h1>
+
+  <!-- Category Page -->
+  <div id="categoryPage" class="events-grid-large">
+    <div class="event-card-large">
+      <div class="event-image" style="background-image:url('https://i.ibb.co/kVTV6gcB/generated-image.png');"></div>
+      <div class="event-info">
+        <h3 class="event-title">Major Events</h3>
+        <button class="btn" onclick="showCategory('major')">Events</button>
+      </div>
+    </div>
+
+    <div class="event-card-large">
+      <div class="event-image" style="background-image:url('https://i.ibb.co/rGrVHNqn/generated-image-1.png');"></div>
+      <div class="event-info">
+        <h3 class="event-title">Minor Events</h3>
+        <button class="btn" onclick="showCategory('minor')">Events</button>
+      </div>
+    </div>
+
+    <div class="event-card-large">
+      <div class="event-image" style="background-image:url('https://i.ibb.co/6cLpYxX2/generated-image-2.png');"></div>
+      <div class="event-info">
+        <h3 class="event-title">Online Events</h3>
+        <button class="btn" onclick="showCategory('online')">Events</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Events Page -->
+  <div id="mainPage" style="display:none;">
+    <div id="eventGrid" class="events-grid-large"></div>
+    <div class="small-center">
+      <button class="btn" onclick="backToCategories()">⬅ Back to Categories</button>
+    </div>
+  </div>
+
+  <!-- Details Page -->
+  <div id="detailsPage" class="details-container"></div>
+</section>
+
+<script>
+const eventsData = {
+major: [
+  { 
+    name: "Solo Singing", 
+    img: "https://i.ibb.co/TxC4PcKT/generated-image-3.png", 
+    details: [
+      "Multiple entries per college is allowed.",
+      "Songs of any genre/ language is permitted.",
+      "Participants are allowed to use karaoke or bring their own instruments.",
+      "Participants must submit their karaoke 2 days prior in WhatsApp to the incharge and also have to bring them in a pendrive on the day of the event.",
+      "Time limit - 3 mins.",
+      "Medleys & mashups are allowed.",
+      "Preliminary round will be conducted based on the number of entries and details regarding it will be shared after registration is closed.",
+      "Judging criteria - vocal quality, rhythm, pitch, song choice, audience response.",
+      "Judge's decision will be final.",
+      "Registration fee: Rs. 200 per head."
+    ],
+    incharges: [
+      { name: "Ananya R", phone: "9876543210" },
+      { name: "Vikram S", phone: "9876543211" }
+    ]
+  },
+  { 
+    name: "Duet Singing", 
+    img: "https://i.ibb.co/DPL4XMc0/generated-image-4.png", 
+    details: [
+      "Singers should be from the same college. No gender specifications.",
+      "Songs of any language / genre are allowed.",
+      "Medleys are allowed.",
+      "Time limit - 4 minutes.",
+      "Singers are allowed to use karaoke or bring their own instruments.",
+      "Singers must submit their karaoke 2 days prior in WhatsApp to the incharge and also bring with them pen drive on the day of the event.",
+      "Multiple entries are allowed per college.",
+      "Preliminary round will be conducted based on the number of entries and details of which will be shared after the registration is closed.",
+      "Judging criteria - vocal quality, dynamics, time sense, stage presence, audience response.",
+      "Judge's decisions will be final.",
+      "Registration fee: Rs. 250 per head."
+    ],
+    incharges: [
+      { name: "Priya M", phone: "9876543212" },
+      { name: "Karthik V", phone: "9876543213" }
+    ]
+  },
+  { 
+    name: "Solo Instruments", 
+    img: "https://i.ibb.co/fzxRRF7P/Whats-App-Image-2025-08-23-at-15-18-21.jpg", 
+    details: [
+      "Entries: 3 per college.",
+      "Time limit : 4 minutes.",
+      "Participants must inform their instrument of choice during online registration.",
+      "Only drums will be provided and no other instrument or additional sound equipments will be provided.",
+      "Registration fee: Rs. 250 per head."
+    ],
+    incharges: [
+      { name: "Meena S", phone: "9876543214" },
+      { name: "Rahul T", phone: "9876543215" }
+    ]
+  },
+  { 
+    name: "Solo Dance", 
+    img: "https://i.ibb.co/60SC1S3n/Whats-App-Image-2025-08-23-at-15-24-19.jpg", 
+    details: [
+      "Every participant must be a college/ university student.",
+      "There is no specific theme for the competition.",
+      "Marks will be awarded based on creativity, music, stage presence, team work, dance variation, synchronisation, entertainment value and skills.",
+      "Participants must bring their music in pen drive.",
+      "Groups must report latest at the competition desk 45 minutes before the start of the competition.",
+      "Each participant will have a maximum of 4-5 minutes to demonstrate their style and expertise.",
+      "Timing will begin with the first choreographed movement or note of music.",
+      "Timing will end with the last choreographed movement or note of music, whichever comes last.",
+      "Final decision regarding any matter lies in the hands of the organisers and judges and is binding.",
+      "Registration fee: Rs. 200 per head."
+    ],
+    incharges: [
+      { name: "Sneha K", phone: "9876543216" },
+      { name: "Rohit A", phone: "9876543217" }
+    ]
+  },
+  { 
+    name: "Duet Dance", 
+    img: "https://i.ibb.co/JwBJDQv2/Whats-App-Image-2025-08-23-at-15-30-04.jpg", 
+    details: [
+      "Time limit: 3-4 mins; do not exceed the time limit!",
+      "Songs: any language & genre - open to the participants.",
+      "Must submit their audio days prior in WhatsApp to the incharge and also bring with them pen drive on the day of the event.",
+      "Participants should be from the same college.",
+      "No gender specifications.",
+      "Any number of teams from one college are welcome.",
+      "Prelims will be conducted on the day before.",
+      "Both prelims and finals will be held offline.",
+      "Theme: anything of your choice (not a specific requirement).",
+      "Use of props and stage sets should be informed prior.",
+      "Any article that can make the stage messy (water, lighting, matchsticks, powder, etc) are prohibited.",
+      "Judging criteria: dance form, compatibility, coordination, expression, stage & prop usage, costume, audience quotient.",
+      "Judge's decision will be final.",
+      "Registration fee: Rs. 200 per head."
+    ],
+    incharges: [
+      { name: "Arjun R", phone: "9876543218" },
+      { name: "Divya P", phone: "9876543219" }
+    ]
+  },
+  { 
+    name: "Choreonite", 
+    img: "https://i.ibb.co/35Yp71Ng/Whats-App-Image-2025-08-19-at-17-29-54.jpg", 
+    details: [
+      "Only one team per college with 8 to 20 participants.",
+      "Time limit - 5 to 10 mins. Exceed time limit will lead to point deduction.",
+      "Maximum 16 teams can register with priority based on the order of registration.",
+      "Songs of any language & genre are accepted.",
+      "Track should be submitted in mp3 format in a pendrive 1 day prior to event (on or before 28th September).",
+      "Freestyle props can be used and collected by the participants.",
+      "Anything that makes the stage messy and slippery (water/oily/soapy liquids, matchsticks, fire, glitter/confetti, etc) are prohibited.",
+      "Judging criteria: choreography, coordination and perfection, facial expression and body language, props usage and costumes.",
+      "Judges decision will be final.",
+      "Registration fee: Rs. 2000 per team."
+    ],
+    incharges: [
+      { name: "Sandhya L", phone: "9876543222" },
+      { name: "Vikash M", phone: "9876543223" }
+    ]
+  },
+  { 
+    name: "Replica", 
+    img: "https://i.ibb.co/SXsByK0D/Whats-App-Image-2025-08-26-at-15-42-41.jpg", 
+    details: [
+      "Only first 15 registrations are accepted (due to time restrictions).",
+      "No prelims will be conducted.",
+      "Time limit: 5-6 minutes (including onstage arrangements).",
+      "Participants have to replicate any recognised Indian movie song of any Indian language.",
+      "Participants can merge more than one song (within the time limit).",
+      "Participants would be made to dance once the submitted video song is being projected.",
+      "Props/accessories are allowed. Sharp and dangerous props are strictly prohibited.",
+      "Any article that can make the stage messy are prohibited.",
+      "Please do mention your name, college, year of study, coordinator name while sending the video track.",
+      "Costume: try to match the costume.",
+      "Props are not provided from our side. Properly edited video (mp4 track) must be sent to the respective incharges.",
+      "Any form of vulgarity or obscenity in terms of song selection or costume would be disqualified.",
+      "Replication of YouTube videos by online choreographers are not allowed.",
+      "Judging criteria: synchronization with the video, coordination, costume and presentation, overall perfection, maintenance of time limit.",
+      "Judges decision will be final.",
+      "Registration fee: Rs. 200 per head."
+    ],
+    incharges: [
+      { name: "Megha J", phone: "9876543224" },
+      { name: "Sathish R", phone: "9876543225" }
+    ]
+  },
+  { 
+    name: "Adaptunes", 
+    img: "https://i.ibb.co/MDnrQCS0/Whats-App-Image-2025-08-19-at-17-29-53.jpg", 
+    details: [
+      "Maximum 5 entries per college.",
+      "Song of any language will be played.",
+      "Time limit : 2 mins.",
+      "No prior information will be given regarding the music.",
+      "Judging criteria: adaptation, dance moves, continuity, expression and stage coverage.",
+      "Judges decision will be final.",
+      "Registration fee: Rs. 250 per head."
+    ],
+    incharges: [
+      { name: "Keerthi N", phone: "9876543220" },
+      { name: "Manoj T", phone: "9876543221" }
+    ]
+  },
+  { 
+    name: "Fashion Parade", 
+    img: "https://i.ibb.co/wFyPpSnw/Whats-App-Image-2025-08-23-at-15-37-58.jpg", 
+    details: [
+      "It is a team event, with a minimum of 10 members to a maximum of 25 members, including the narrator and a helper, if any.",
+      "More than one team from a college are allowed to compete.",
+      "Theme: open theme.",
+      "Maximum time limit: 15 minutes, no gap during the performance, including introduction and theme explanation.",
+      "Participants should carry their audio tracks in mp3 format in a pendrive and WhatsApp the same beforehand to the respective incharges.",
+      "Stage sets are not allowed.",
+      "Background video or picture can be depicted on the LED screen but it must be submitted a day before the event.",
+      "Vulgarity is strictly prohibited.",
+      "Any form of obscenity will lead to disqualification of the team from the contest.",
+      "Judging will be based on the theme, creativity, apparel, stage presence and the overall impact.",
+      "Judge's decision will be final.",
+      "Registration fee: Rs. 150 per head."
+    ],
+    incharges: [
+      { name: "Nandhini V", phone: "9876543226" },
+      { name: "Kiran S", phone: "9876543227" }
+    ]
+  },
+],
+
+minor: [
+  { 
+    name: "Adzap", 
+    img: "https://i.ibb.co/5XzQ0r1B/Whats-App-Image-2025-08-19-at-17-09-13-1.jpg", 
+    details: [
+      "Maximum 2 teams per college are allowed.",
+      "Each team can have 5 to 10 members.",
+      "No inter college team is allowed.",
+      "Time limit: 10 minutes per team.",
+      "Preparation time: 15 minutes will be given.",
+      "Topic/ product will be allotted by lots.",
+      "Props should be arranged by the participants.",
+      "Judging criteria: content, humor, spontaneity, creativity, adherence to the topic.",
+      "Registration fee: Rs. 150 per head."
+    ], 
+    incharges: [{ name: "Deepika R", phone: "9876543230" }, { name: "Ajay P", phone: "9876543231" }]
+  },
+  { 
+    name: "Channel Surfing", 
+    img: "https://i.ibb.co/PbLqmBK/Whats-App-Image-2025-08-19-at-17-09-14.jpg", 
+    details: [
+      "Team members: minimum 4 and maximum 8.",
+      "Time limit: 3 to 5 minutes.",
+      "No preparation or buffer time will be given.",
+      "Any number of channels may be given.",
+      "No vulgarity or obscenity is allowed.",
+      "Judging criteria: spontaneity, creativity, teamwork.",
+      "Registration fee: Rs. 150 per head."
+    ], 
+    incharges: [{ name: "Sowmya K", phone: "9876543232" }, { name: "Harish V", phone: "9876543233" }]
+  },
+  { 
+    name: "Voice Over", 
+    img: "https://i.ibb.co/d0K61wLN/Whats-App-Image-2025-08-19-at-17-14-09-1.jpg", 
+    details: [
+      "Participants may mimic sound and speeches of well known personalities and actors.",
+      "Time limit: 4 to 5 minutes.",
+      "Should not contain abusive or offensive words.",
+      "Judging criteria: overall performance, variety of voices mimicked, skills imitated.",
+      "Use of foul language leads to disqualification.",
+      "Background video should be sent in mp4 format one day before the event.",
+      "Judge’s decision is final.",
+      "Registration fee: Rs. 150 per head."
+    ], 
+    incharges: [{ name: "Aparna G", phone: "9876543234" }, { name: "Varun M", phone: "9876543235" }]
+  },
+  { 
+    name: "Dumb C", 
+    img: "https://i.ibb.co/BVcC5WgP/Gemini-Generated-Image-5344h15344h15344.png", 
+    details: [
+      "Participants can act out any theme or character.",
+      "Time limit: 3 to 7 minutes.",
+      "Language permitted: Tamil or English.",
+      "Props and costumes can be used.",
+      "Judging criteria: acting skills, expressions, conveying the story, audience engagement, proper use of props.",
+      "Registration fee: Rs. 150 per head."
+    ], 
+    incharges: [{ name: "Nithya P", phone: "9876543236" }, { name: "Sanjay B", phone: "9876543237" }]
+  },
+  { 
+    name: "Connexions", 
+    img: "https://i.ibb.co/zTF9G8wN/Whats-App-Image-2025-08-19-at-17-09-10-1.jpg", 
+    details: [
+      "Team of 3 members.",
+      "Questions will be shown on the panel in the form of clues.",
+      "The team which finds out the answer the fastest will get the points.",
+      "Registration fee: Rs. 200 per team."
+    ], 
+    incharges: [{ name: "Rahul S", phone: "9876543238" }, { name: "Meera J", phone: "9876543239" }]
+  },
+  { 
+    name: "K-Drama Quiz", 
+    img: "https://i.ibb.co/KpmNbvVK/Whats-App-Image-2025-08-19-at-17-09-06.jpg", 
+    details: [
+      "Team of 3 members.",
+      "Questions will be based on popular K-dramas.",
+      "Registration fee: Rs. 200 per team."
+    ], 
+    incharges: [{ name: "Kaviya N", phone: "9876543240" }, { name: "Ramesh T", phone: "9876543241" }]
+  },
+  { 
+    name: "Anime Quiz", 
+    img: "https://i.ibb.co/JjGdD8Xd/Whats-App-Image-2025-08-19-at-17-09-10.jpg", 
+    details: [
+      "Team of 3 members.",
+      "Questions will be from shounen, shoujo, seinen, isekai and josei animes.",
+      "Registration fee: Rs. 200 per team."
+    ], 
+    incharges: [{ name: "Sathya P", phone: "9876543242" }, { name: "Jeevan K", phone: "9876543243" }]
+  },
+  { 
+    name: "Shipwreck", 
+    img: "https://i.ibb.co/CKcwL6Zq/Whats-App-Image-2025-08-19-at-17-09-15.jpg", 
+    details: [
+      "This is a solo event.",
+      "Each participant will be allotted a character through lots.",
+      "Preparation time: 10 minutes will be given.",
+      "Performance time: 5 minutes.",
+      "A maximum of 3 participants per college are allowed.",
+      "Judging criteria: content, humor, arguments, audience response.",
+      "Use of vulgarity or obscenity is prohibited.",
+      "Judge’s decision will be final.",
+      "Registration fee: Rs. 200 per head."
+    ], 
+    incharges: [{ name: "Anjali R", phone: "9876543244" }, { name: "Dinesh V", phone: "9876543245" }]
+  },
+  { 
+    name: "Cine Quiz", 
+    img: "https://i.ibb.co/4wDn4p87/Whats-App-Image-2025-08-19-at-17-09-14-1.jpg", 
+    details: [
+      "Team of 3 members.",
+      "Questions will be based on Game of Thrones, House of Dragons, Marvel, DC, Harry Potter and more.",
+      "Registration fee: Rs. 200 per team."
+    ], 
+    incharges: [{ name: "Lokesh A", phone: "9876543246" }, { name: "Revathi M", phone: "9876543247" }]
+  },
+  { 
+    name: "Movie Spoof", 
+    img: "https://i.ibb.co/bMqKQ0mN/Whats-App-Image-2025-08-21-at-23-37-54-1.jpg",
+    details: [
+      "One team per college.",
+      "Each team should have 5 to 10 members.",
+      "Maximum 12 teams are allowed to register.",
+      "Time limit: 8 to 10 minutes.",
+      "Theme: any movie.",
+      "Audio recordings should be submitted one week prior to the event.",
+      "Judging criteria: content, clarity, properties, costumes, audio visuals, humor, audience response.",
+      "Use of vulgarity or plagiarism will lead to disqualification.",
+      "Registration fee: Rs. 150 per head."
+    ], 
+    incharges: [{ name: "Hari K", phone: "9876543248" }, { name: "Shalini V", phone: "9876543249" }]
+  }
+],
+
+online: [
+  { 
+    name: "Reel Making", 
+    img: "https://i.ibb.co/tw0FpJ47/Whats-App-Image-2025-08-19-at-17-39-06.jpg", 
+    details: [
+      "One entry per participant is allowed, there is no restriction in number of entries from each college.",
+      "Reels should not exceed 30 seconds.",
+      "Entries should be sent in mp4 format in WhatsApp or mail ID.",
+      "Use of vulgar content will lead to disqualification.",
+      "Winners and runners will be selected based on number of likes.",
+      "Details regarding your name, college name, year of study and your Instagram ID to be sent along with the reel.",
+      "Registration fee: Rs. 100 per entry."
+    ], 
+    incharges: [{ name: "Keerthi N", phone: "9876543250" }, { name: "Manoj T", phone: "9876543251" }]
+  },
+  { 
+    name: "Online Meme Contest", 
+    img: "https://i.ibb.co/zhw3vXDy/Whats-App-Image-2025-08-19-at-17-39-09.jpg", 
+    details: [
+      "One entry per participant is allowed, there is no restriction in number of entries from each college.",
+      "Memes should be sent in picture (jpeg) format in WhatsApp or mail ID.",
+      "Entries should not contain vulgar or offensive content.",
+      "Use of bot likes will lead to disqualification.",
+      "Winners and runners will be selected based on number of likes.",
+      "Details regarding your name, college name, year of study and your Instagram ID to be sent along with the meme.",
+      "Registration fee: Rs. 100 per entry."
+    ], 
+    incharges: [{ name: "Varsha P", phone: "9876543252" }, { name: "Abhinav R", phone: "9876543253" }]
+  },
+  { 
+    name: "Painting", 
+    img: "https://i.ibb.co/TxGhBtxg/Whats-App-Image-2025-08-19-at-17-39-07-2.jpg", 
+    details: [
+      "One entry per participant is allowed, there is no restriction in number of entries from each college.",
+      "Artwork can be done using any physical media.",
+      "Artwork should be sent in picture (jpeg) format in WhatsApp or mail ID.",
+      "Winner and runners will be selected based on number of likes.",
+      "Admin's decision is final.",
+      "Details regarding your name, college name, year of study and your Instagram ID to be sent along with the artwork.",
+      "Registration fee: Rs. 100 per entry."
+    ], 
+    incharges: [{ name: "Gayathri L", phone: "9876543254" }, { name: "Naveen J", phone: "9876543255" }]
+  },
+  { 
+    name: "Photography", 
+    img: "https://i.ibb.co/N666vkXD/Whats-App-Image-2025-08-19-at-17-39-06-1.jpg", 
+    details: [
+      "Photo should be original.",
+      "One photo per person should be submitted before the due date.",
+      "No editing allowed.",
+      "Winners will be announced based on judge's decision.",
+      "Special prize will be based on likes.",
+      "Details regarding your name, college name, year of study and your Instagram ID to be sent along with the photo.",
+      "Registration fee: Rs. 100 per entry."
+    ], 
+    incharges: [{ name: "Divya K", phone: "9876543256" }, { name: "Surya P", phone: "9876543257" }]
+  },
+  { 
+    name: "Mandala", 
+    img: "https://i.ibb.co/xtdfnW94/Whats-App-Image-2025-08-19-at-17-39-07-1.jpg", 
+    details: [
+      "One entry per participant is allowed, there is no restriction in number of entries from each college.",
+      "Artwork can be done using any physical media.",
+      "Artwork should be sent in picture (jpeg) format in WhatsApp or mail ID.",
+      "Winner and runners will be selected based on number of likes.",
+      "Admin's decision is final.",
+      "Details regarding your name, college name, year of study and your Instagram ID to be sent along with the artwork.",
+      "Registration fee: Rs. 100 per entry."
+    ], 
+    incharges: [{ name: "Rithika V", phone: "9876543258" }, { name: "Gokul M", phone: "9876543259" }]
+  },
+  { 
+    name: "Short Story", 
+    img: "https://i.ibb.co/yF5HFhX2/Whats-App-Image-2025-08-19-at-17-39-08-1.jpg", 
+    details: [
+      "One entry per participant is allowed, there is no restriction in number of entries from each college.",
+      "Plagiarism will lead to disqualification.",
+      "Short story should be sent in picture (jpeg) format in WhatsApp or mail ID.",
+      "Winners will be based on judge's decision.",
+      "Details regarding your name, college name, year of study and your Instagram ID to be sent along with your work.",
+      "Registration fee: Rs. 100 per entry."
+    ], 
+    incharges: [{ name: "Shreya S", phone: "9876543260" }, { name: "Vignesh P", phone: "9876543261" }]
+  },
+  { 
+    name: "Poem", 
+    img: "https://i.ibb.co/B5xq8Wdh/Whats-App-Image-2025-08-19-at-17-39-08.jpg", 
+    details: [
+      "One entry per participant is allowed, there is no restriction in number of entries from each college.",
+      "Poems should be sent in picture (jpeg) format in WhatsApp or mail ID.",
+      "Plagiarism will lead to disqualification.",
+      "Winners and runners will be based on judge's decision.",
+      "Special prize will be based on number of likes.",
+      "Judge's decision will be final.",
+      "Details regarding your name, college name, year of study and your Instagram ID to be sent along with the poem.",
+      "Registration fee: Rs. 100 per entry."
+    ], 
+    incharges: [{ name: "Pavithra M", phone: "9876543262" }, { name: "Rajesh K", phone: "9876543263" }]
+  },
+  { 
+    name: "Movie Frame Recreation", 
+    img: "https://i.ibb.co/gFzmx77z/Gemini-Generated-Image-dydkqndydkqndydk.png", 
+    details: [
+      "Theme can be of any content.",
+      "One entry per person, multiple entries are allowed from one college.",
+      "Posters from any movie can be used as reference.",
+      "Any kind of costumes and accessories can be used.",
+      "Minor editing and colour grading are allowed.",
+      "Entries should be sent in document through WhatsApp or mail ID to the incharges on or before 20/08/2024.",
+      "References should also be included in the document.",
+      "Entries should be sent along with name, college name, year of study, Instagram ID, contact number.",
+      "Use of bot likes will lead to disqualification.",
+      "No offensive contents are allowed.",
+      "Winners will be selected on the basis of number of likes and judge decision.",
+      "Registration fee: Rs. 100 per entry."
+    ], 
+    incharges: [{ name: "Suresh A", phone: "9876543264" }, { name: "Anu V", phone: "9876543265" }]
+  }
+]
+};
+function showCategory(category) {
+  document.getElementById('categoryPage').style.display = 'none';
+  const mainPage = document.getElementById('mainPage');
+  const eventGrid = document.getElementById('eventGrid');
+  eventGrid.innerHTML = '';
+  mainPage.style.display = 'block';
+  document.getElementById('detailsPage').classList.remove('show');
+
+  const arr = eventsData[category] || [];
+  arr.forEach((ev, idx) => {
+    const card = document.createElement('div');
+    card.className = 'event-card-large';
+    card.innerHTML = `
+      <div class="event-image" style="background-image:url('${ev.img}');"></div>
+      <div class="event-info">
+        <h3 class="event-title">${escapeHtml(ev.name)}</h3>
+        <button class="btn" onclick="showDetails('${category}', ${idx})">Details</button>
+      </div>
+    `;
+    eventGrid.appendChild(card);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showDetails(category, index) {
+  const ev = (eventsData[category] && eventsData[category][index]) ? eventsData[category][index] : null;
+  if (!ev) return;
+
+  document.getElementById('mainPage').style.display = 'none';
+  const dp = document.getElementById('detailsPage');
+
+  const detailsList = `
+  <ul style="list-style: disc; text-align:left; max-width:500px; margin:0 auto;">
+    ${ev.details.map(d => `<li>${escapeHtml(d)}</li>`).join('')}
+  </ul>
+`;
+  const inchargeCards = ev.incharges.map(ic => `
+    <div class="incharge-card">
+      <h4>${escapeHtml(ic.name)}</h4>
+      <div class="contact-buttons">
+        <a href="tel:${ic.phone}" class="btn">📞 Call</a>
+        <a href="https://wa.me/91${ic.phone}" target="_blank" class="btn">💬 WhatsApp</a>
+      </div>
+    </div>
+  `).join('');
+
+  dp.innerHTML = `
+    <h1 class="page-title shimmer">${escapeHtml(ev.name)}</h1>
+    <ul>${detailsList}</ul>
+    <h3>Event Incharges</h3>
+    <div class="incharges-grid">${inchargeCards}</div>
+    <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+      <button class="btn" onclick="window.open('YOUR_GOOGLE_FORM_LINK','_blank')">Register Now</button>
+      <button class="btn" onclick="backToEvents()">⬅ Back to Events</button>
+    </div>
+  `;
+  dp.classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function backToEvents() {
+  const dp = document.getElementById('detailsPage');
+  dp.classList.remove('show');
+  dp.innerHTML = "";
+  document.getElementById('mainPage').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+  const mobileMenu = document.getElementById("mobile-menu");
+  const navLinks = document.querySelector(".nav-links");
+
+  mobileMenu.addEventListener("click", () => {
+    const expanded = mobileMenu.getAttribute("aria-expanded") === "true" || false;
+    mobileMenu.setAttribute("aria-expanded", !expanded);
+    navLinks.classList.toggle("active");
+  });
+
+  // Optional: close menu after clicking a link
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      mobileMenu.setAttribute("aria-expanded", false);
+    });
+  });
+  function backToCategories() {
+  document.getElementById('mainPage').style.display = 'none';
+  document.getElementById('categoryPage').style.display = 'grid'; // restore categories grid
+  document.getElementById('detailsPage').classList.remove('show');
+  document.getElementById('detailsPage').innerHTML = "";
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+</script>
+
+</body>
+</html>
