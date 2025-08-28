@@ -633,6 +633,38 @@ function backToEvents() {
   document.getElementById('detailsPage').classList.remove('show');
   document.getElementById('mainPage').style.display = 'block';
 }
+function backToCategories() {
+  document.getElementById('mainPage').style.display = 'none';
+  document.getElementById('categoryPage').style.display = 'grid';
+  document.getElementById('detailsPage').classList.remove('show');
+  document.getElementById('detailsPage').innerHTML = "";
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+const mobileMenu = document.getElementById("mobile-menu");
+const navLinks = document.querySelector(".nav-links");
+
+mobileMenu.addEventListener("click", () => {
+  const expanded = mobileMenu.getAttribute("aria-expanded") === "true" || false;
+  mobileMenu.setAttribute("aria-expanded", !expanded);
+  navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    mobileMenu.setAttribute("aria-expanded", false);
+  });
+});
 </script>
 
 </body>
