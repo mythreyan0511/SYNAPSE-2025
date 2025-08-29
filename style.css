@@ -813,3 +813,15 @@ html {
   }
 }
 
+.fee-prize {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.fee-prize-img {
+  max-width: 240px;   /* keep smaller on desktop */
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
