@@ -88,7 +88,6 @@ const eventsData = {
         "All ICC rules applied. Matches will be played in stitch ball.",
         "Each team can have a maximum of 16 players.",
         "Umpires & organisers decision is final.",
-        "Registration fee: Rs. 2500 + Ball fee (Ball will be returned after match).",
         "Further instructions will be intimated through our incharges.",
         "Teams should bring their own kits. Balls will be provided."
       ], 
@@ -196,7 +195,6 @@ const eventsData = {
         "Each match will have 3 sets of 25 each.",
         "Decision of Referee and organizing committee is final.",
         "All Standard FIVB rules apply.",
-        "Registration fee : Men - Rs. 1600 per team. Women - Rs.1300 per team."
       ], 
 	  fee: "Rs. 1600 per team",
       prize: "1st: Rs. 500, 2nd: Rs. 300",
@@ -385,17 +383,25 @@ function showCategory(category) {
 }
 
 function showDetails(category, index) {
-  const ev = (eventsData[category] && eventsData[category][index]) ? eventsData[category][index] : null;
+  const ev = eventsData[category]?.[index];
   if (!ev) return;
 
   document.getElementById('mainPage').style.display = 'none';
   const dp = document.getElementById('detailsPage');
 
- const detailsList = `
-  <ul style="list-style: disc; text-align:left; max-width:500px; margin:0 auto;">
-    ${ev.details.map(d => `<li>${escapeHtml(d)}</li>`).join('')}
-  </ul>
-`;
+  const detailsList = `
+    <ul style="list-style: disc; text-align:left; max-width:500px; margin:0 auto;">
+      ${ev.details.map(d => `<li>${escapeHtml(d)}</li>`).join('')}
+    </ul>
+  `;
+
+  let feePrize = '';
+  if (ev.fee || ev.prize) {
+    feePrize = `<div class="fee-prize">
+      ${ev.fee ? `<p><strong>Fee:</strong> ${escapeHtml(ev.fee)}</p>` : ''}
+      ${ev.prize ? `<p><strong>Prize:</strong> ${escapeHtml(ev.prize)}</p>` : ''}
+    </div>`;
+  }
 
   const inchargeCards = ev.incharges.map(ic => `
     <div class="incharge-card">
@@ -409,7 +415,8 @@ function showDetails(category, index) {
 
   dp.innerHTML = `
     <h1 class="page-title shimmer">${escapeHtml(ev.name)}</h1>
-    <ul>${detailsList}</ul>
+    ${detailsList}
+    ${feePrize}
     <h3>Event Incharges</h3>
     <div class="incharges-grid">${inchargeCards}</div>
     <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
